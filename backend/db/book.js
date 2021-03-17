@@ -38,7 +38,8 @@ const updateBook = (req, res) => {
     const { title, writer, year, pages } = req.body
 
     pool.query('update book set title = $1, writer = $2, year = $3, pages = $4 where id= $5', [title, writer, year, pages, id], (err, resul) => {
-        if(err) res.send(err) 
+        if(err) res.status(500).send(err.code)
+        res.status(200).send()
     })
 }
 

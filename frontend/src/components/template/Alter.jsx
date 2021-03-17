@@ -15,16 +15,16 @@ export default class Alter extends Component {
     }
 
     updateBook() {
-        const title = document.querySelector('#title').value
-        const writer = document.querySelector('#writer').value
-        const year = document.querySelector('#year').value
-        const pages = document.querySelector('#pages').value
+        const title = document.querySelector('#title')
+        const writer = document.querySelector('#writer')
+        const year = document.querySelector('#year')
+        const pages = document.querySelector('#pages')
 
         const data = {
-            title,
-            writer,
-            year,
-            pages
+            title: title.value ? title.value : title.placeholder,
+            writer: writer.value ? writer.value : writer.placeholder,
+            year: year.value ? year.value : year.placeholder,
+            pages: pages.value ? pages.value : pages.placeholder
         }
 
         const config = {

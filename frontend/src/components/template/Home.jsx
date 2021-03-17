@@ -62,20 +62,23 @@ export default class Home extends Component {
 
     renderTable() {
         return (
-            <table className="table mt-4">
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Autor</th>
-                        <th>Ano</th>
-                        <th>Páginas</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.renderRows()}
-                </tbody>
-            </table>
+            <div className="table-responsive">
+
+                <table className="table mt-4">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Autor</th>
+                            <th>Ano</th>
+                            <th>Páginas</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.renderRows()}
+                    </tbody>
+                </table>
+            </div>
         )
     }
 

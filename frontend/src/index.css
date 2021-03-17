@@ -11,3 +11,46 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root {
+  display: grid;
+  grid-template-rows: 12vh 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+  "header navbar"
+  "content content";
+}
+
+header.header {
+  grid-area: header;
+}
+
+.content {
+  grid-area: content;
+  justify-content: flex-start;
+}
+
+nav.navbar {
+  grid-area: navbar;
+  background:  rgba(69,103,131,1) 82.8%;
+  justify-content: flex-end;
+}
+
+@media (max-width: 505px) {
+  #root {
+    grid-template-rows: 12vh 10vh 1fr;
+    grid-template-areas: 
+    "header header"
+    "navbar navbar"
+    "content content";
+  }
+
+  header.header {
+    justify-content: center;
+  }
+
+  nav.navbar {
+    background: linear-gradient( 76.3deg,  rgba(44,62,78,1) 12.6%, rgba(69,103,131,1) 82.8% );
+    justify-content: center;
+  }
+}

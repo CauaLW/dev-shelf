@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import Header from '../components/template/Header'
 import Main from '../components/template/Main'
+import Nav from '../components/template/Nav'
 import Routes from './Routes'
 
 const App = props => {
@@ -11,6 +12,7 @@ const App = props => {
         <BrowserRouter>
             <React.StrictMode>
                 <Header/>
+                <Nav/>
                 <Main>
                     <Routes/>
                 </Main>

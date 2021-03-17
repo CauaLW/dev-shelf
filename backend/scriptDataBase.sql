@@ -1,8 +1,4 @@
-CREATE DATABASE devshelf
-    WITH 
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    CONNECTION LIMIT = -1;
+CREATE DATABASE devshelf;
 
 create table book (
     id serial primary key unique not null,
