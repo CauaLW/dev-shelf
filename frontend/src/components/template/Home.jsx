@@ -21,9 +21,9 @@ export default class Home extends Component {
 
     async searchBook() {
         await this.refresh()
-        const title = document.querySelector('#title').value.trim()
+        const title = document.querySelector('#title').value.trim().toLowerCase()
 
-        const books = this.state.list.filter(book => book.title.trim() === title)
+        const books = this.state.list.filter(book => book.title.trim().toLowerCase() === title)
         this.setState({ list: books })
     }
 
@@ -65,7 +65,6 @@ export default class Home extends Component {
             <table className="table mt-4">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Título</th>
                         <th>Autor</th>
                         <th>Ano</th>
@@ -84,7 +83,6 @@ export default class Home extends Component {
         return this.state.list.map(book => {
             return (
                 <tr key={book.id}>
-                    <td>{book.id}</td>
                     <td>{book.title}</td>
                     <td>{book.writer}</td>
                     <td>{book.year}</td>

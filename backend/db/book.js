@@ -28,7 +28,7 @@ const createBook = (req, res) => {
     const { title, writer, year, pages } = req.body
 
     pool.query('insert into book (title, writer, year, pages) values($1, $2, $3, $4)', [title, writer, year, pages], (err, resul) => {
-        if(err) res.status(500).send()
+        if(err) res.status(500).send(err.code)
         res.status(200).send()
     })
 }

@@ -4,29 +4,50 @@ import React, { Component } from 'react'
 const baseUrl = 'http://localhost:3001/livros'
 
 export default class Register extends Component {
+    checkData() {
+        const title = document.querySelector('#title').value ? true : false
+        const writer = document.querySelector('#writer').value ? true : false
+        const year = document.querySelector('#year').value ? true : false
+        const pages = document.querySelector('#pages').value ? true : false
+
+        const valid = title && writer && year && pages
+
+        return valid
+    }
+
     register() {
-        const title = document.querySelector('#title').value
-        const writer = document.querySelector('#writer').value
-        const year = document.querySelector('#year').value
-        const pages = document.querySelector('#pages').value
-
-        const data = JSON.stringify({ title, writer, year, pages })
-
-        const config = {
-            method: 'post',
-            url: baseUrl,
-            headers: { 'Content-Type': 'application/json'},
-            data
+        if(this.checkData()) {
+            const title = document.querySelector('#title').value
+            const writer = document.querySelector('#writer').value
+            const year = document.querySelector('#year').value
+            const pages = document.querySelector('#pages').value
+    
+            const data = JSON.stringify({ title, writer, year, pages })
+    
+            const config = {
+                method: 'post',
+                url: baseUrl,
+                headers: { 'Content-Type': 'application/json'},
+                data
+            }
+            axios(config)
+                .then(function() {
+                    window.alert('Livro adicionado!')
+                    window.location.href = 'http://localhost:3000/'
+                })
+                .catch(function(error) { 
+                    const errorCode = error.response.data
+                    if (errorCode === '22P02') {
+                        window.alert('Um ou mais dados são inválidos. Tente novamente!')
+                    }
+                    else if (errorCode.toString() === '23505')
+                    window.alert('Um livro com este título já existe!')
+                    window.location.href = 'http://localhost:3000'
+                })
         }
-        axios(config)
-            .then(function() {
-                window.alert('Livro adicionado!')
-                window.location.href = 'http://localhost:3000/'
-            })
-            .catch(function(error) { 
-                window.alert('Um livro com este título já existe!')
-                window.location.href = 'http://localhost:3000'
-            })
+        else {
+            window.alert('Um ou mais dados estão incorretos!')
+        }
     }
 
     renderForm() {
